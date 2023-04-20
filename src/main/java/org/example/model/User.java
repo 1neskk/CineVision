@@ -6,12 +6,12 @@ import java.util.List;
 public class User {
     private String m_Name;
     private int m_Age;
-    private List<String> m_PreferedGenres;
+    private List<String> m_PreferredGenres;
 
     public User(String name, int age) {
         this.m_Name = name;
         this.m_Age = age;
-        this.m_PreferedGenres = new ArrayList<>();
+        this.m_PreferredGenres = new ArrayList<>();
     }
 
     public String getName() {
@@ -30,11 +30,11 @@ public class User {
         this.m_Age = age;
     }
 
-    public List<String> getPreferedGenres() {
-        return m_PreferedGenres;
+    public List<String> getPreferredGenres() {
+        return m_PreferredGenres;
     }
 
-    public void setPreferedGenres(List<String> preferedGenres) {
-        this.m_PreferedGenres = preferedGenres;
+    public void setPreferredGenres(List<String> preferredGenres) {
+        this.m_PreferredGenres = preferredGenres;
     }
 }
