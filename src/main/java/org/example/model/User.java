@@ -1,5 +1,5 @@
 package org.example.model;
 
-public class Usuario {
+public class User {
 
 }
