@@ -5,12 +5,14 @@ import java.util.List;
 
 public class User {
     private String m_Name;
+    private String m_Email;
     private int m_Age;
     private List<String> m_PreferredGenres;
 
-    public User(String name, int age) {
+    public User(String name, int age, String email) {
         this.m_Name = name;
         this.m_Age = age;
+        this.m_Email = email;
         this.m_PreferredGenres = new ArrayList<>();
     }
 
@@ -36,5 +38,13 @@ public class User {
 
     public void setPreferredGenres(List<String> preferredGenres) {
         this.m_PreferredGenres = preferredGenres;
+    }
+
+    public String getEmail() {
+        return m_Email;
+    }
+
+    public void setEmail(String email) {
+        this.m_Email = email;
     }
 }
