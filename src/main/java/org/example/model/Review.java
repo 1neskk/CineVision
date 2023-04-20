@@ -1,11 +1,11 @@
 package org.example.model;
 
-public class Rating {
+public class Review {
     private int m_Rating;
     private User m_User;
     private Movie m_Movie;
 
-    public Rating(User user, Movie movie, int rating) {
+    public Review(User user, Movie movie, int rating) {
         this.m_Rating = rating;
         this.m_User = user;
         this.m_Movie = movie;
