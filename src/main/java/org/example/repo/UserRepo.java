@@ -13,11 +13,12 @@ public class UserRepo {
     public void addUser(User user) {
         try{
             //Connection connection = // TODO: Get connection from ConnectionPool
-            String sql = "INSERT INTO user (name, age, email) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO user (name, age, email, admin) VALUES (?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, user.getName());
             statement.setInt(2, user.getAge());
             statement.setString(3, user.getEmail());
+            statement.setBoolean(4, user.getAdmin());
             statement.executeUpdate();
             statement.close();
             connection.close();
@@ -37,7 +38,8 @@ public class UserRepo {
                 String name = resultSet.getString("name");
                 int age = resultSet.getInt("age");
                 String email = resultSet.getString("email");
-                User user = new User(name, age, email);
+                boolean isAdmin = resultSet.getBoolean("admin");
+                User user = new User(name, age, email, isAdmin);
                 users.add(user);
             }
             resultSet.close();

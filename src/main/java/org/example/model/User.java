@@ -7,12 +7,14 @@ public class User {
     private String m_Name;
     private String m_Email;
     private int m_Age;
+    private boolean m_IsAdmin;
     private List<String> m_PreferredGenres;
 
-    public User(String name, int age, String email) {
+    public User(String name, int age, String email, boolean isAdmin) {
         this.m_Name = name;
         this.m_Age = age;
         this.m_Email = email;
+        this.m_IsAdmin = isAdmin;
         this.m_PreferredGenres = new ArrayList<>();
     }
 
@@ -46,5 +48,13 @@ public class User {
 
     public void setEmail(String email) {
         this.m_Email = email;
+    }
+
+    public boolean getAdmin() {
+        return m_IsAdmin;
+    }
+
+    public void setAdmin(boolean isAdmin) {
+        this.m_IsAdmin = isAdmin;
     }
 }
