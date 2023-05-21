@@ -84,7 +84,7 @@ public class LoginScreen extends javax.swing.JFrame {
                 sairButtonActionPerformed(evt);
             }
         });
-        
+
         //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/example.png")));
 
         javax.swing.GroupLayout telaLoginPanelLayout = new javax.swing.GroupLayout(telaLoginPanel);
