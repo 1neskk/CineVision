@@ -29,9 +29,21 @@ public class LoginScreen extends javax.swing.JFrame {
         loginPanel.setBackground(new java.awt.Color(255, 255, 255));
         loginPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        // add styled login button with hover animation
         loginButton.setBackground(new java.awt.Color(204, 204, 204));
         loginButton.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         loginButton.setText("Login");
+        loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                loginButton.setBackground(new java.awt.Color(0, 0, 0));
+                loginButton.setForeground(new java.awt.Color(0, 0, 0));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                loginButton.setBackground(new java.awt.Color(204, 204, 204));
+                loginButton.setForeground(new java.awt.Color(0, 0, 0));
+            }
+        });
+
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
@@ -82,6 +94,18 @@ public class LoginScreen extends javax.swing.JFrame {
         sairButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sairButtonActionPerformed(evt);
+            }
+
+        });
+
+        sairButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                sairButton.setBackground(new java.awt.Color(0, 0, 0));
+                sairButton.setForeground(new java.awt.Color(0, 0, 0));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                sairButton.setBackground(new java.awt.Color(204, 204, 204));
+                sairButton.setForeground(new java.awt.Color(0, 0, 0));
             }
         });
 
