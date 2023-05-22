@@ -1,33 +1,38 @@
 package org.example;
-import java.sql.Connection;
 
-import java.sql.*;
 
 public class User {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/database_name";
-    private static final String USERNAME = "username";
-    private static final String PASSWORD = "password";
+    private String username;
+    private String password;
+    private String email;
 
-    private Connection conn;
-
-    public User() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
-            System.out.println("Connected to the database.");
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
+    public User(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
     }
 
-    public void closeConnection() {
-        try {
-            if (conn != null && !conn.isClosed()) {
-                conn.close();
-                System.out.println("Connection closed.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
