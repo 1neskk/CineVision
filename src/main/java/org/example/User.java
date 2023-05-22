@@ -3,6 +3,8 @@ import java.sql.Connection;
 
 import java.sql.*;
 
+// TODO remake this sh*t
+
 public class User {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/database_name";
     private static final String USERNAME = "username";

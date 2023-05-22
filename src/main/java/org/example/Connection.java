@@ -3,10 +3,13 @@ package org.example;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
+// TODO remake this sh*t
+
 public class Connection {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/database_name";
-    private static final String USERNAME = "username";
-    private static final String PASSWORD = "password";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/Cinevision";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "admin";
 
     public static void main(String[] args) {
         try {
