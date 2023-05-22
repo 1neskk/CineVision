@@ -13,7 +13,7 @@ public class Connection {
             java.sql.Connection conn = establishConnection();
             System.out.println("Connected to the database.");
 
-            // Perform database operations here
+            
 
             closeConnection(conn);
         } catch (SQLException e) {
