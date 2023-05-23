@@ -34,4 +34,11 @@ public class CRUD {
         }
     }
 
+    public void UserDelete(User user) throws Exception {
+        String sql = "DELETE * FROM tb_users WHERE id = ?";
+        try (Connection c = DBConnection.GetConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
+            ps.execute();
+        }
+    }
 }
