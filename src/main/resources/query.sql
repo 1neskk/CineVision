@@ -29,3 +29,6 @@ insert into tb_users (name, password, user_type) values
 ('user', 'user', 'common');
 
 select * from tb_users;
+
+-- delete user by id
+delete from tb_users where id = 1;

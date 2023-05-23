@@ -32,7 +32,7 @@ public class PanelCover extends javax.swing.JPanel {
     }
 
     private void init() {
-        title = new JLabel("Welcome Back!");
+        title = new JLabel("Already have an account?");
         title.setFont(new Font("sansserif", 1, 30));
         title.setForeground(new Color(245, 245, 245));
         add(title);
@@ -119,9 +119,9 @@ public class PanelCover extends javax.swing.JPanel {
     public void login(boolean login) {
         if (this.isLogin != login) {
             if (login) {
-                title.setText("hello, Friend!");
+                title.setText("Don't have an account?");
                 description.setText("Enter your personal details");
-                description1.setText("and start journey with us");
+                description1.setText("and start your journey with us");
                 button.setText("SIGN UP");
             } else {
                 title.setText("Welcome Back!");

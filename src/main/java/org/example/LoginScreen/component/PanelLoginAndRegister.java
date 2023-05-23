@@ -6,11 +6,9 @@ import org.example.LoginScreen.swing.MyTextField;
 import org.example.DAO.CRUD;
 import org.example.User;
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Font;
 import javax.swing.*;
 import net.miginfocom.swing.MigLayout;
-import java.sql.*;
 
 public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 
@@ -22,28 +20,38 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         register.setVisible(true);
     }
 
+    public MyTextField txtUser = new MyTextField();
+    public MyPasswordField txtPass = new MyPasswordField();
+    public MyTextField txtAge = new MyTextField();
+    public MyTextField txtGender = new MyTextField();
+
     private void initRegister() {
         register.setLayout(new MigLayout("wrap", "push[center]push", "push[]25[]10[]10[]25[]push"));
-        JLabel label = new JLabel("Create Account");
+        JLabel label = new JLabel("Sign Up");
         label.setFont(new Font("sansserif", 1, 30));
         label.setForeground(new Color(65,105,225));
         register.add(label);
-        MyTextField txtUser = new MyTextField();
         txtUser.setPrefixIcon(new ImageIcon(getClass().getResource("/user.png")));
         txtUser.setHint("Name");
         register.add(txtUser, "w 60%");
-        MyTextField txtEmail = new MyTextField();
-        txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/mail.png")));
-        txtEmail.setHint("Email");
-        register.add(txtEmail, "w 60%");
-        MyPasswordField txtPass = new MyPasswordField();
         txtPass.setPrefixIcon(new ImageIcon(getClass().getResource("/pass.png")));
         txtPass.setHint("Password");
         register.add(txtPass, "w 60%");
+        txtAge.setPrefixIcon(new ImageIcon(getClass().getResource("/age.png")));
+        txtAge.setHint("Age");
+        register.add(txtAge, "w 60%");
+        txtGender.setPrefixIcon(new ImageIcon(getClass().getResource("/gender.png")));
+        txtGender.setHint("Gender");
+        register.add(txtGender, "w 60%");
         Button cmd = new Button();
         cmd.setBackground(new Color(65,105,225));
         cmd.setForeground(new Color(250, 250, 250));
         cmd.setText("SIGN UP");
+        cmd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerButtonActionPerformed(evt);
+            }
+        });
         register.add(cmd, "w 40%, h 40");
     }
 
@@ -84,6 +92,25 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         }
     }
 
+    public void registerButtonActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        String username = txtUser.getText();
+        String password = new String(txtPass.getPassword());
+        int age = Integer.parseInt(txtAge.getText());
+        String gender = new String(txtGender.getText());
+
+        User user = new User(username, password, age, gender);
+        CRUD crud = new CRUD();
+        try
+        {
+           crud.UserRegister(user);
+            JOptionPane.showMessageDialog(null, "Successfully Registered!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
         String username = loginField.getText();
@@ -91,7 +118,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         try {
             User user = new User(username, password);
             CRUD crud = new CRUD();
-            if (crud.Login(user)) {
+            if (crud.UserLogin(user)) {
                 JOptionPane.showMessageDialog(null, "Login Success " + user.getUsername());
             } else {
                 JOptionPane.showMessageDialog(null, "Login Failed");
