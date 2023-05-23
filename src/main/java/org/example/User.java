@@ -8,7 +8,7 @@ public class User {
     private String password;
     private int age;
     private String gender;
-    private ArrayList<String> favMovies = new ArrayList<>();
+    private ArrayList<String> favMovieGenre = new ArrayList<>();
 
 
     public User(String username, String password, int age, String gender) {
