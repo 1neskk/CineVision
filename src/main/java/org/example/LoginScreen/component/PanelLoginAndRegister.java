@@ -3,11 +3,14 @@ package org.example.LoginScreen.component;
 import org.example.LoginScreen.swing.Button;
 import org.example.LoginScreen.swing.MyPasswordField;
 import org.example.LoginScreen.swing.MyTextField;
+import org.example.DAO.CRUD;
+import org.example.User;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import javax.swing.*;
 import net.miginfocom.swing.MigLayout;
+import java.sql.*;
 
 public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 
@@ -83,13 +86,18 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
+        String username = loginField.getText();
+        String password = new String(passField.getPassword());
         try {
-            if(loginField.getText().equals("admin") && passField.getText().equals("admin")){
-                JOptionPane.showMessageDialog(null,"Welcome!","Login",1);
+            User user = new User(username, password);
+            CRUD crud = new CRUD();
+            if (crud.Login(user)) {
+                JOptionPane.showMessageDialog(null, "Login Success " + user.getUsername());
             } else {
-                JOptionPane.showMessageDialog(null,"Username and/or password invalid!","Error",2);
+                JOptionPane.showMessageDialog(null, "Login Failed");
             }
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
             e.printStackTrace();
         }
     }

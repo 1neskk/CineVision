@@ -1,17 +1,36 @@
 package org.example;
 
-
-// TODO remake this sh*t
+import java.util.ArrayList;
 
 public class User {
+    private int id;
     private String username;
     private String password;
-    private String email;
+    private int age;
+    private String gender;
+    // TODO: private ArrayList<Movie> favMovies = new ArrayList<>();
 
-    public User(String username, String password, String email) {
+
+    public User(String username, String password, int age, String gender) {
         this.username = username;
         this.password = password;
-        this.email = email;
+        this.age = age;
+        this.gender = gender;
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public User(int id)
+    {
+        this.id = id;
+    }
+
+    public User()
+    {
+
     }
 
     public String getUsername() {
@@ -28,13 +47,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }
