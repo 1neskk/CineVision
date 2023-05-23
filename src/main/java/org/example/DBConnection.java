@@ -9,7 +9,7 @@ public class DBConnection {
     private static final String PORT = "3306";
     private static final String DATABASE = "cinevision";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "admin";
+    private static final String PASSWORD = "anima123";
 
     public static Connection GetConnection() throws SQLException {
         Connection conn = null;

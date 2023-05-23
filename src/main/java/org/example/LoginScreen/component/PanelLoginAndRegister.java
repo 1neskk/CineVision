@@ -27,7 +27,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 
     private void initRegister() {
         register.setLayout(new MigLayout("wrap", "push[center]push", "push[]25[]10[]10[]25[]push"));
-        JLabel label = new JLabel("Sign Up");
+        JLabel label = new JLabel("Cinevision");
         label.setFont(new Font("sansserif", 1, 30));
         label.setForeground(new Color(65,105,225));
         register.add(label);
@@ -60,7 +60,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 
     private void initLogin() {
         login.setLayout(new MigLayout("wrap", "push[center]push", "push[]25[]10[]10[]25[]push"));
-        JLabel label = new JLabel("Sign In");
+        JLabel label = new JLabel("Cinevision");
         label.setFont(new Font("sansserif", 1, 30));
         label.setForeground(new Color(65,105,225));
         login.add(label);
