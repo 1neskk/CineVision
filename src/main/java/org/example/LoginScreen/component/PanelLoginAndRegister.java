@@ -3,13 +3,10 @@ package org.example.LoginScreen.component;
 import org.example.LoginScreen.swing.Button;
 import org.example.LoginScreen.swing.MyPasswordField;
 import org.example.LoginScreen.swing.MyTextField;
-<<<<<<< HEAD
-import org.example.DAO.UserDB;
-import org.example.User;
-=======
-import org.example.Users.UsersDB;
+
 import org.example.Users.User;
->>>>>>> testing
+import org.example.Users.UserDB;
+
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.*;
@@ -97,27 +94,25 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         }
     }
 
-    public void registerButtonActionPerformed(java.awt.event.ActionEvent evt)
-    {
+    public void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {
         String username = txtUser.getText();
         String password = new String(txtPass.getPassword());
         int age = Integer.parseInt(txtAge.getText());
         String gender = new String(txtGender.getText());
 
         User user = new User(username, password, age, gender);
-<<<<<<< HEAD
         UserDB userDB = new UserDB();
-        try
-        {
-           userDB.UserRegister(user);
-=======
-        UsersDB usersDB = new UsersDB();
-        try
-        {
-           usersDB.UserRegister(user);
->>>>>>> testing
-            JOptionPane.showMessageDialog(null, "Successfully Registered!");
-        } catch (Exception e) {
+        try {
+            userDB.UserRegister(user);
+            UserDB usersDB = new UserDB();
+            try {
+                usersDB.UserRegister(user);
+                JOptionPane.showMessageDialog(null, "Successfully Registered!");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
             e.printStackTrace();
         }
@@ -129,18 +124,16 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         String password = new String(passField.getPassword());
         try {
             User user = new User(username, password);
-<<<<<<< HEAD
             UserDB userDB = new UserDB();
             if (userDB.UserLogin(user)) {
-=======
-            UsersDB usersDB = new UsersDB();
-            if (usersDB.UserLogin(user)) {
->>>>>>> testing
-                JOptionPane.showMessageDialog(null, "Login Success " + user.getUsername());
-            } else {
-                JOptionPane.showMessageDialog(null, "Login Failed");
+                UserDB usersDB = new UserDB();
+                if (usersDB.UserLogin(user)) {
+                    JOptionPane.showMessageDialog(null, "Login Success " + user.getUsername());
+                } else {
+                    JOptionPane.showMessageDialog(null, "Login Failed");
+                }
             }
-        } catch (Exception e) {
+        }catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
             e.printStackTrace();
         }
