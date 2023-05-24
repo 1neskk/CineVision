@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Users;
 
 import java.util.ArrayList;
 
@@ -8,6 +8,7 @@ public class User {
     private String password;
     private int age;
     private String gender;
+    private boolean isAdmin;
     private ArrayList<String> favMovieGenre = new ArrayList<>();
 
 
