@@ -1,17 +1,6 @@
 package org.example.Users;
 
-import java.util.ArrayList;
-
 public class User {
-    private int id;
-    private String username;
-    private String password;
-    private int age;
-    private String gender;
-    private boolean isAdmin;
-    private ArrayList<String> favMovieGenre = new ArrayList<>();
-
-
     public User(String username, String password, int age, String gender) {
         this.username = username;
         this.password = password;
@@ -24,11 +13,16 @@ public class User {
         this.password = password;
     }
 
+    public User(int id, String password)
+    {
+        this.id = id;
+        this.password = password;
+    }
+
     public User(int id) { this.id = id; }
 
     public User()
     {}
-
 
     public int getId() { return id; }
 
@@ -55,4 +49,24 @@ public class User {
     public String getGender() { return gender; }
 
     public void setGender(String gender) { this.gender = gender; }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+    public String[] getFavMovieGenre() {
+        return favMovieGenre;
+    }
+
+    private int id;
+    private String username;
+    private String password;
+    private int age;
+    private String gender;
+    private boolean isAdmin = false;
+    private final String[] favMovieGenre = {"Romance", "Comédia", "Terror", "Suspense", "Ação" };
 }
