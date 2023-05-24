@@ -17,6 +17,10 @@ public class Movie {
         this.rating = rating;
     }
 
+    public Movie()
+    {}
+
+
 
 public String GetTitle() { return title; }
 public String GetDirector() { return director; }

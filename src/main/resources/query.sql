@@ -17,10 +17,10 @@ create table if not exists tb_users
 create table if not exists tb_movies
 (
     id int not null auto_increment,
-    name varchar(255) not null,
-    description varchar(255) not null,
-    image varchar(255) not null,
-    created_at timestamp default current_timestamp,
+    title varchar(255) not null,
+    director varchar(255) not null,
+    release_date date not null,
+    genre varchar(255) not null,
     primary key (id)
 );
 

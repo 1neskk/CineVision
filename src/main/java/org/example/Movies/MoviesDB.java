@@ -22,7 +22,7 @@ public class MoviesDB {
             statement.setString(3, movie.GetDirector());
             statement.setString(4, movie.GetGenre());
             statement.setArray(5, (java.sql.Array) movie.GetRating());
-            statement.executeUpdate();
+            statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }

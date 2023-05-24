@@ -1,10 +1,10 @@
-package org.example.DAO;
+package org.example.Users;
 
 import org.example.DBConnection;
-import org.example.User;
+
 import java.sql.*;
 
-public class CRUD {
+public class UsersDB {
     public boolean UserLogin(User user) throws Exception
     {
         String sql = "SELECT name, password FROM tb_users WHERE name = ? AND password = ?";
