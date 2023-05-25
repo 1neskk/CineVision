@@ -32,20 +32,20 @@ public class PanelCover extends javax.swing.JPanel {
     }
 
     private void init() {
-        title = new JLabel("Already have an account?");
+        title = new JLabel("Ja tem uma conta?");
         title.setFont(new Font("sansserif", 1, 30));
         title.setForeground(new Color(245, 245, 245));
         add(title);
-        description = new JLabel("To keep connected with us please");
+        description = new JLabel("Para manter conectado conosco, por favor");
         description.setForeground(new Color(245, 245, 245));
         add(description);
-        description1 = new JLabel("login with your personal info");
+        description1 = new JLabel("logue com seus dados pessoais");
         description1.setForeground(new Color(245, 245, 245));
         add(description1);
         button = new ButtonOutLine();
         button.setBackground(new Color(255, 255, 255));
         button.setForeground(new Color(255, 255, 255));
-        button.setText("SIGN IN");
+        button.setText("LOGIN");
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -119,15 +119,15 @@ public class PanelCover extends javax.swing.JPanel {
     public void login(boolean login) {
         if (this.isLogin != login) {
             if (login) {
-                title.setText("Don't have an account?");
-                description.setText("Enter your personal details");
-                description1.setText("and start your journey with us");
-                button.setText("SIGN UP");
+                title.setText("Não tem uma conta?");
+                description.setText("Coloque seus dados pessoais");
+                description1.setText("e comece sua jornada conosco");
+                button.setText("REGISTRAR-SE");
             } else {
-                title.setText("Welcome Back!");
-                description.setText("To keep connected with us please");
-                description1.setText("login with your personal info");
-                button.setText("SIGN IN");
+                title.setText("Bem vindo de volta!");
+                description.setText("Para manter conectado conosco, por favor");
+                description1.setText("logue com seus dados pessoais");
+                button.setText("LOGIN");
             }
             this.isLogin = login;
         }
