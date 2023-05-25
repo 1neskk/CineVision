@@ -4,53 +4,83 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.BorderLayout;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import static org.example.DBConnection.GetConnection;
 
 public class MoviesDashboard extends JFrame {
-
 
     public MoviesDashboard() {
         setTitle("Movies Dashboard");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
         String[] columnNames = {"Title", "Genre", "Year", "Director", "Rating", "Average Score"};
         tableModel = new DefaultTableModel(columnNames, 0);
-
 
         table = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
 
-
         JButton addButton = new JButton("Add Movie");
-        addButton.addActionListener(e -> {
-            String title = JOptionPane.showInputDialog("Enter the movie title:");
-            String genre = JOptionPane.showInputDialog("Enter the movie genre:");
-            String year = JOptionPane.showInputDialog("Enter the movie year:");
-            String director = JOptionPane.showInputDialog("Enter the movie director:");
-            String rating = JOptionPane.showInputDialog("Enter the movie rating (1-10):");
-
-
-            Object[] row = {title, genre, year, director, rating, ""};
-            tableModel.addRow(row);
-
-
-            updateAverageScores();
-            sortTableByAverageScore();
-        });
+        addButton.addActionListener(e -> selectMovieFromDatabase());
         add(addButton, BorderLayout.SOUTH);
 
         setVisible(true);
     }
 
+    private void selectMovieFromDatabase() {
+        try (Connection connection = GetConnection();
+             Statement statement = connection.createStatement()) {
+
+            String query = "SELECT title, genre, release_year, director FROM tb_movies";
+            ResultSet resultSet = statement.executeQuery(query);
+
+            JList<String> movieList = new JList<>();
+            DefaultListModel<String> listModel = new DefaultListModel<>();
+
+            while (resultSet.next()) {
+                String movieTitle = resultSet.getString("title");
+                String movieGenre = resultSet.getString("genre");
+                String movieYear = resultSet.getString("release_year");
+                String movieDirector = resultSet.getString("director");
+
+                listModel.addElement(movieTitle + " - " + movieGenre + " - " + movieYear + " - " + movieDirector);
+            }
+
+            movieList.setModel(listModel);
+
+            JOptionPane.showMessageDialog(this, new JScrollPane(movieList), "Select a Movie", JOptionPane.PLAIN_MESSAGE);
+
+            String selectedMovie = movieList.getSelectedValue();
+
+            if (selectedMovie != null) {
+                String rating = JOptionPane.showInputDialog(this, "Enter the movie rating (1-10):");
+
+                String[] movieDetails = selectedMovie.split(" - ");
+                String title = movieDetails[0];
+                String genre = movieDetails[1];
+                String year = movieDetails[2];
+                String director = movieDetails[3];
+
+                Object[] row = {title, genre, year, director, rating, ""};
+                tableModel.addRow(row);
+
+                updateAverageScores();
+                sortTableByAverageScore();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error retrieving movies from the database.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     private void updateAverageScores() {
         int rowCount = tableModel.getRowCount();
         int lastRowIndex = rowCount - 1;
-
         int ratingSum = 0;
         int ratingCount = 0;
-
 
         for (int j = 0; j < rowCount; j++) {
             String rating = (String) tableModel.getValueAt(j, 4);
@@ -64,7 +94,6 @@ public class MoviesDashboard extends JFrame {
         tableModel.setValueAt(averageScore, lastRowIndex, 5);
     }
 
-
     private void sortTableByAverageScore() {
         if (sorter == null) {
             sorter = new TableRowSorter<>(tableModel);
@@ -72,8 +101,8 @@ public class MoviesDashboard extends JFrame {
         }
 
         sorter.setComparator(5, (score1, score2) -> {
-            if (score1 instanceof Double averageScore1 && score2 instanceof Double averageScore2) {
-                return Double.compare(averageScore2, averageScore1);
+            if (score1 instanceof Double && score2 instanceof Double) {
+                return Double.compare((Double) score2, (Double) score1);
             } else {
                 int rowCount = tableModel.getRowCount();
                 if (rowCount >= 2) {
@@ -83,7 +112,6 @@ public class MoviesDashboard extends JFrame {
                         int index2 = table.convertRowIndexToModel(selectedRow);
                         String ratingCount1 = (String) tableModel.getValueAt(index1, 4);
                         String ratingCount2 = (String) tableModel.getValueAt(index2, 4);
-
                         int count1 = ratingCount1 != null && !ratingCount1.isEmpty() ? Integer.parseInt(ratingCount1) : 0;
                         int count2 = ratingCount2 != null && !ratingCount2.isEmpty() ? Integer.parseInt(ratingCount2) : 0;
 
@@ -104,13 +132,12 @@ public class MoviesDashboard extends JFrame {
         sorter.toggleSortOrder(5);
     }
 
-
-
     public static void main(String[] args) {
-        new MoviesDashboard();
+        SwingUtilities.invokeLater(MoviesDashboard::new);
     }
 
     private final DefaultTableModel tableModel;
-    private TableRowSorter<DefaultTableModel> sorter;
     private final JTable table;
+    private TableRowSorter<DefaultTableModel> sorter;
+
 }

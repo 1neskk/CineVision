@@ -1,5 +1,7 @@
 create database if not exists Cinevision;
 use Cinevision;
+SHOW TABLES;
+
 
 create table if not exists tb_users
 (
@@ -19,7 +21,7 @@ create table if not exists tb_movies
     id int not null auto_increment,
     title varchar(255) not null default '',
     director varchar(255) not null default '',
-    release_date date not null default '2023-01-01',
+    release_year varchar(255) not null default '',
     genre varchar(255) not null default '',
     primary key (id)
 );
@@ -28,12 +30,18 @@ insert into tb_users (name, password, user_type) values
 ('admin', 'admin', 'admin'),
 ('user', 'user', 'common');
 
-insert into tb_movies (genre) values
-('Romance'),
-('Comédia'),
-('Terror'),
-('Suspense'),
-('Ação');
+-- insert into tb_movies (genre) values
+-- ('Romance'),
+-- ('Comédia'),
+-- ('Terror'),
+-- ('Suspense'),
+-- ('Ação');
+
+INSERT INTO tb_movies (title, release_year, director, genre) VALUES ('The godfather', '1972', 'Francis Ford Coppola', 'Suspense');
+INSERT INTO tb_movies (title, release_year, director, genre) VALUES ('Interstellar', '2014', 'Cristopher Nolan', 'Ação');
+INSERT INTO tb_movies (title, release_year, director, genre) VALUES ('Fight Club', '1999', 'David Fincher', 'Suspense');
+
+
 
 select * from tb_users;
-select genre from tb_movies;
+
