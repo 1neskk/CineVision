@@ -2,12 +2,6 @@ package org.example.Movies;
 import java.util.ArrayList;
 
 public class Movie {
-    private String title;
-    private String director;
-    private int releaseYear;
-    private String genre;
-    private ArrayList<Integer> rating = new ArrayList<>();
-
 
     public Movie(String title, String director, int releaseYear, String genre, ArrayList<Integer> rating) {
         this.title = title;
@@ -20,8 +14,6 @@ public class Movie {
     public Movie()
     {}
 
-
-
 public String GetTitle() { return title; }
 public String GetDirector() { return director; }
 public int GetReleaseYear() { return releaseYear; }
@@ -33,4 +25,10 @@ public void SetDirector(String director) { this.director = director; }
 public void SetReleaseYear(int releaseYear) { this.releaseYear = releaseYear; }
 public void SetGenre(String genre) { this.genre = genre; }
 public void SetRating(ArrayList<Integer> rating) { this.rating = rating; }
+
+private String title;
+private String director;
+private int releaseYear;
+private String genre;
+private ArrayList<Integer> rating = new ArrayList<>();
 }

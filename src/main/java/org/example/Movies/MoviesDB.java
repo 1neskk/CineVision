@@ -15,7 +15,7 @@ public class MoviesDB {
 
     public void registerMovie(Movie movie) {
         try (Connection connection = DriverManager.getConnection(String.format(DB_URL, HOST, PORT, DATABASE), DB_USER, DB_PASSWORD)) {
-            String sql = "INSERT INTO movies (title, year, director, genre, rating) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO tb_movies (title, release_year, director, genre, rating) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, movie.GetTitle());
             statement.setInt(2, movie.GetReleaseYear());
@@ -27,5 +27,6 @@ public class MoviesDB {
             e.printStackTrace();
         }
     }
+
 }
 
