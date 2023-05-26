@@ -4,13 +4,13 @@ import org.example.LoginScreen.main.LoginMain;
 
 public class Main {
     public static void main(String[] args) {
-        run();
+        init();
     }
 
-    static private void run() {
+    static private void init() {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

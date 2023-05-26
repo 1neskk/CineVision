@@ -14,17 +14,17 @@ public class Movie {
     public Movie()
     {}
 
-public String GetTitle() { return title; }
-public String GetDirector() { return director; }
-public int GetReleaseYear() { return releaseYear; }
-public String GetGenre() { return genre; }
-public ArrayList<Integer> GetRating() { return rating; }
+public String getTitle() { return title; }
+public String getDirector() { return director; }
+public int getReleaseYear() { return releaseYear; }
+public String getGenre() { return genre; }
+public ArrayList<Integer> getRating() { return rating; }
 
-public void SetTitle(String title) { this.title = title; }
-public void SetDirector(String director) { this.director = director; }
-public void SetReleaseYear(int releaseYear) { this.releaseYear = releaseYear; }
-public void SetGenre(String genre) { this.genre = genre; }
-public void SetRating(ArrayList<Integer> rating) { this.rating = rating; }
+public void setTitle(String title) { this.title = title; }
+public void setDirector(String director) { this.director = director; }
+public void setReleaseYear(int releaseYear) { this.releaseYear = releaseYear; }
+public void setGenre(String genre) { this.genre = genre; }
+public void setRating(ArrayList<Integer> rating) { this.rating = rating; }
 
 private String title;
 private String director;

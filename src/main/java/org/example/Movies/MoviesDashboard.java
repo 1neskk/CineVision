@@ -139,5 +139,4 @@ public class MoviesDashboard extends JFrame {
     private final DefaultTableModel tableModel;
     private final JTable table;
     private TableRowSorter<DefaultTableModel> sorter;
-
 }

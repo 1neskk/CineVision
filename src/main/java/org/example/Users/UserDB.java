@@ -75,4 +75,8 @@ public class UserDB {
             ps.execute();
         }
     }
+
+    public boolean isAdmin(User user) {
+        return user.getUsername().equals("admin") && user.getPassword().equals("admin");
+    }
 }

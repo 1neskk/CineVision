@@ -22,7 +22,9 @@ public class User {
     public User(int id) { this.id = id; }
 
     public User()
-    {}
+    {
+
+    }
 
     public int getId() { return id; }
 
@@ -50,7 +52,7 @@ public class User {
 
     public void setGender(String gender) { this.gender = gender; }
 
-    public boolean isAdmin() {
+    public boolean getisAdmin() {
         return isAdmin;
     }
 
@@ -58,15 +60,10 @@ public class User {
         isAdmin = admin;
     }
 
-    public String[] getFavMovieGenre() {
-        return favMovieGenre;
-    }
-
     private int id;
     private String username;
     private String password;
     private int age;
     private String gender;
-    private boolean isAdmin = false;
-    private final String[] favMovieGenre = {"Romance", "Comédia", "Terror", "Suspense", "Ação" };
+    private boolean isAdmin;
 }

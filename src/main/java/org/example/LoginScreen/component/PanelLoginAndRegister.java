@@ -1,11 +1,10 @@
 package org.example.LoginScreen.component;
 
-import org.example.LoginScreen.main.LoginMain;
 import org.example.LoginScreen.swing.Button;
 import org.example.LoginScreen.swing.MyPasswordField;
 import org.example.LoginScreen.swing.MyTextField;
 
-import org.example.Main;
+import org.example.Movies.MoviesDashboard;
 import org.example.Users.User;
 import org.example.Users.UserDB;
 
@@ -130,15 +129,22 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         try {
             User user = new User(username, password);
             UserDB userDB = new UserDB();
-            if (userDB.UserLogin(user)) {
-                    JOptionPane.showMessageDialog(null, "Bem vindo " + user.getUsername());
-                    AdminDashboard ad = new AdminDashboard();
-                    ad.setVisible(true);
-                    Window w = SwingUtilities.getWindowAncestor(this);
-                    w.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Erro no Login");
+            if(userDB.UserLogin(user)) {
+                JOptionPane.showMessageDialog(null, "Bem vindo " + user.getUsername() +"!");
+                MoviesDashboard md = new MoviesDashboard();
+                md.setVisible(true);
+                Window w = SwingUtilities.getWindowAncestor(this);
+                w.dispose();
+                if (userDB.isAdmin(user)) {
+                    AdminDashboard adminDashboard = new AdminDashboard();
+                    adminDashboard.setVisible(true);
+                    Window wind = SwingUtilities.getWindowAncestor(this);
+                    wind.dispose();
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario ou senha incorretos!");
+            }
+
             } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
             e.printStackTrace();
