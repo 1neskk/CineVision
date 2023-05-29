@@ -1,7 +1,9 @@
 package org.example.Users;
 
 import org.example.DBConnection;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class UserDB {
     public boolean UserLogin(User user) throws Exception
