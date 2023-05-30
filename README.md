@@ -15,4 +15,4 @@ Cinevision is a movie management system made in Java that allows you to manage y
 
 ## License
 
-This project is under the license [MIT](./LICENSE).
+This project is under the [MIT](./LICENSE) license.
